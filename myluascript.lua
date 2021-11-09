@@ -68,6 +68,7 @@ end
 -- 출력될 obs source를 text(GDI+)로 해서 text 값을 내보내기
 -- 스크립트 동작 및 프로퍼티 세팅 관련
 -- obs의 input source 중 마이크를 골라서 mic 변수에 연동
+-- https://obsproject.com/docs/scripting.html#script-sources-lua-only 에서 찾아볼 것
 ----------------------------------------------------------
 
 -- A function named script_properties defines the properties that the user
