@@ -74,6 +74,7 @@ end
 
 -- A function named script_update will be called when settings are changed
 function script_update(settings)
+    
     dlcflag       = obs.obs_data_get_int(settings, "DLC")
     modflag       = obs.obs_data_get_int(settings, "MOD")
     micflag       = obs.obs_data_get_int(settings, "MIC")
@@ -81,7 +82,7 @@ function script_update(settings)
     bgmflag       = obs.obs_data_get_int(settings, "BGM")
     bgmsrc        = obs.obs_data_get_string(settings, "BGM Src")
     source_name   = obs.obs_data_get_string(settings, "source")
-    
+    -- error(dlcflag..modflag..micflag..ttsflag..bgmflag..bgmsrc..source_name)
     set_title_text()
 end
 
@@ -118,8 +119,9 @@ end
 
 -- my Function to set title text
 function set_title_text()
+    error("1)"..titletext)
     titletext = "Cities Skyline : "
-    if dlcflag then 
+    if dlcflag == 1 then 
         titletext = titletext .. "All"
     else
         titletext = titletext .. "NO"
@@ -127,15 +129,15 @@ function set_title_text()
     
     titletext = titletext .. " DLC, "
     
-    if modflag then
-        titletext = titletext .. "MOD"
-    else
+    if modflag == 1 then
         titletext = titletext .. ""
+    else
+        titletext = titletext .. "NO "
     end
 
-    titletext = titletext .. ", MIC "
+    titletext = titletext .. "MOD, MIC "
     
-    if micflag then
+    if micflag == 1 then
         titletext = titletext .. "ON"
     else
         titletext = titletext .. "OFF"
@@ -143,7 +145,7 @@ function set_title_text()
     
     titletext = titletext .. ", Chat TTS "
     
-    if ttsflag then
+    if ttsflag == 1 then
         titletext = titletext .. "ON"
     else
         titletext = titletext .. "OFF"
@@ -151,7 +153,7 @@ function set_title_text()
     
     titletext = titletext .. ", BGM "
     
-    if bgmflag then
+    if bgmflag == 1 then
         titletext = titletext .. "ON"
         if string.len(bgmsrc) > 1 then
             titletext = titletext .. ", " .. bgmsrc
@@ -159,15 +161,27 @@ function set_title_text()
     else
         titletext = titletext .. "OFF"
     end
-    
+    error("2)"..titletext.."/"..source_name)
+
     local source = obs.obs_get_source_by_name(source_name)
 
+    
     if source ~= nil then
         local settings = obs.obs_data_create()
-        obs.obs_data_set_string(settings, "text", titletext)
+        error("3)"..titletext.."/"..source_name)
+
+        obs.obs_data_set_string(settings, source_name, titletext)
+        error("4)"..titletext.."/"..source_name)
+
         obs.obs_source_update(source, settings)
+        error("5)"..titletext.."/"..source_name)
+
         obs.obs_data_release(settings)
+        error("6)"..titletext.."/"..source_name)
+
         obs.obs_source_release(source)
+        error("7)"..titletext.."/"..source_name)
+
     end
 end    
 
