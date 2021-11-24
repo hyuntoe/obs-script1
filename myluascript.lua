@@ -1,5 +1,5 @@
 obs           = obslua
-source_name   = "titletext"
+source_name   = ""
 -- my variables
 dlcflag       = 0
 modflag       = 0
@@ -8,28 +8,6 @@ ttsflag       = 0
 bgmsrc        = ""
 bgmflag       = 0
 titletext     = ""
-obsmicflag    = 0
-
---total_seconds = 0
---
---cur_seconds   = 0
---last_text     = ""
---stop_text     = ""
-activated     = false
-
-hotkey_id     = obs.OBS_INVALID_HOTKEY_ID
-
-
--- 변수는 만들었고,
--- 출력될 obs source를 text(GDI+)로 해서 text 값을 내보내기
--- 스크립트 동작 및 프로퍼티 세팅 관련
--- obs의 input source 중 마이크를 골라서 mic 변수에 연동
--- https://obsproject.com/docs/scripting.html#script-sources-lua-only 에서 찾아볼 것
--- https://dev.to/hectorleiva/start-to-write-plugins-for-obs-with-lua-1172?fbclid=IwAR2_oLcHhzYgUxPo137RoiCkzxo8J7KymLrPzJYXCe2jZNclc7zDiIfzKA0
--- https://github.com/hectorleiva/obs_current_date
---
---
-----------------------------------------------------------
 
 -- A function named script_properties defines the properties that the user
 -- can change for the entire script module itself
@@ -74,15 +52,14 @@ end
 
 -- A function named script_update will be called when settings are changed
 function script_update(settings)
-    
+    source_name   = obs.obs_data_get_string(settings, "source")
     dlcflag       = obs.obs_data_get_int(settings, "DLC")
     modflag       = obs.obs_data_get_int(settings, "MOD")
     micflag       = obs.obs_data_get_int(settings, "MIC")
     ttsflag       = obs.obs_data_get_int(settings, "Chat TTS")
     bgmflag       = obs.obs_data_get_int(settings, "BGM")
     bgmsrc        = obs.obs_data_get_string(settings, "BGM Src")
-    source_name   = obs.obs_data_get_string(settings, "source")
-    -- error(dlcflag..modflag..micflag..ttsflag..bgmflag..bgmsrc..source_name)
+    
     set_title_text()
 end
 
@@ -95,7 +72,6 @@ end
 function script_load(settings)
 	local sh = obs.obs_get_signal_handler()
 	obs.signal_handler_connect(sh, "source_activate", source_activated)
-	-- obs.signal_handler_connect(sh, "source_deactivate", source_deactivated)
 end
 
 function source_activated(cd)
@@ -119,7 +95,6 @@ end
 
 -- my Function to set title text
 function set_title_text()
-    error("1)"..titletext)
     titletext = "Cities Skyline : "
     if dlcflag == 1 then 
         titletext = titletext .. "All"
@@ -161,39 +136,18 @@ function set_title_text()
     else
         titletext = titletext .. "OFF"
     end
-    error("2)"..titletext.."/"..source_name)
 
     local source = obs.obs_get_source_by_name(source_name)
-
-    
     if source ~= nil then
         local settings = obs.obs_data_create()
-        error("3)"..titletext.."/"..source_name)
-
-        obs.obs_data_set_string(settings, source_name, titletext)
-        error("4)"..titletext.."/"..source_name)
-
+        obs.obs_data_set_string(settings, "text", titletext)
         obs.obs_source_update(source, settings)
-        error("5)"..titletext.."/"..source_name)
-
         obs.obs_data_release(settings)
-        error("6)"..titletext.."/"..source_name)
-
         obs.obs_source_release(source)
-        error("7)"..titletext.."/"..source_name)
-
     end
 end    
 
 -- A function named script_description returns the description shown to the user
 function script_description()
 	return "Sets a text source to write down setting selected.\n\nMade by HT"
-end
-
--- A function named script_save will be called when the script is saved
---
--- NOTE: This function is usually used for saving extra data (such as in this
--- case, a hotkey's save data).  Settings set via the properties are saved
--- automatically.
-function script_save(settings)
 end

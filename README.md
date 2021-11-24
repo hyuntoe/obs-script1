@@ -1,15 +1,9 @@
 ## obs-script1
-I will learn LUA script from https://www.lua.org/pil/1.html
-I want to make a LUA script for OBS Studio
-# user input
-OBS Dock has some switches
-- Mic
-- BGM
-- TTS
-- DLC
-- MOD from Steam Workshop
-# script output
-- source 'Text (GDI+)'
-- html page ==> source 'browser'
-- contents : Cities Skyline : { all / no } DLC, { / no } MOD, Mic { on / off }, Chat TTS { on / off }, BGM { on / off }
- .
+my LUA script for OBS Studio
+it changes title source's text from script settings
+
+references
+-- https://obsproject.com/docs/scripting.html#script-sources-lua-only
+-- https://dev.to/hectorleiva/start-to-write-plugins-for-obs-with-lua-1172?fbclid=IwAR2_oLcHhzYgUxPo137RoiCkzxo8J7KymLrPzJYXCe2jZNclc7zDiIfzKA0
+-- https://github.com/hectorleiva/obs_current_date
+----------------------------------------------------------
