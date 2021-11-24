@@ -146,7 +146,7 @@ function set_title_text()
     
     if bgmflag then
         titletext = titletext .. "ON"
-        if bgnsrc.length > 1 then
+        if bgmsrc.length > 1 then
             titletext = titletext .. ", " .. bgmsrc
         end
     else
