@@ -111,46 +111,46 @@ end
 
 -- my Function to set title text
 function set_title_text()
-    titletext = titletext + "Cities Skyline : "
+    titletext = titletext .. "Cities Skyline : "
     if dlcflag then 
-        titletext = titletext + "All"
+        titletext = titletext .. "All"
     else
-        titletext = titletext + "NO"
+        titletext = titletext .. "NO"
     end
     
-    titletext = titletext + " DLC, "
+    titletext = titletext .. " DLC, "
     
     if modflag then
-        titletext = titletext + "MOD"
+        titletext = titletext .. "MOD"
     else
-        titletext = titletext + ""
+        titletext = titletext .. ""
     end
 
-    titletext = titletext + ", MIC "
+    titletext = titletext .. ", MIC "
     
     if micflag then
-        titletext = titletext + "ON"
+        titletext = titletext .. "ON"
     else
-        titletext = titletext + "OFF"
+        titletext = titletext .. "OFF"
     end
     
-    titletext = titletext + ", Chat TTS "
+    titletext = titletext .. ", Chat TTS "
     
     if ttsflag then
-        titletext = titletext + "ON"
+        titletext = titletext .. "ON"
     else
-        titletext = titletext + "OFF"
+        titletext = titletext .. "OFF"
     end
     
-    titletext = titletext + ", BGM "
+    titletext = titletext .. ", BGM "
     
     if bgmflag then
-        titletext = titletext + "ON"
+        titletext = titletext .. "ON"
         if length(bgmsrc) then
-            titletext = titletext + ", " + bgmsrc
+            titletext = titletext .. ", " .. bgmsrc
         end
     else
-        titletext = titletext + "OFF"
+        titletext = titletext .. "OFF"
     end
     
     local source = obs.obs_get_source_by_name(source_name)
