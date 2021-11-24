@@ -1,5 +1,5 @@
 obs           = obslua
-source_name   = "titlechanger"
+source_name   = "titletext"
 -- my variables
 dlcflag       = 0
 modflag       = 0
