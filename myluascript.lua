@@ -111,7 +111,7 @@ end
 
 -- my Function to set title text
 function set_title_text()
-    titletext = titletext .. "Cities Skyline : "
+    titletext = "Cities Skyline : "
     if dlcflag then 
         titletext = titletext .. "All"
     else
