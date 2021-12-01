@@ -47,13 +47,6 @@ end
 -- A function named script_update will be called when settings are changed
 function script_update(settings)
     source_name   = obs.obs_data_get_string(settings, "source")
-    dlcflag       = obs.obs_data_get_bool(settings, "DLC")
-    modflag       = obs.obs_data_get_bool(settings, "MOD")
-    micflag       = obs.obs_data_get_bool(settings, "MIC")
-    ttsflag       = obs.obs_data_get_bool(settings, "Chat TTS")
-    bgmflag       = obs.obs_data_get_bool(settings, "BGM")
-    bgmsrc        = obs.obs_data_get_string(settings, "BGM Src")
-    
     set_title_text(settings)
 end
 
