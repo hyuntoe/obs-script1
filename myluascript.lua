@@ -1,35 +1,18 @@
 obs           = obslua
 source_name   = "titlechanger"
--- my variables
+
+-- my variables 
+-- start:
+-- for input
 dlcflag       = 0
 modflag       = 0
 micflag       = 0
 ttsflag       = 0
 bgmsrc        = ""
 bgmflag       = 0
+-- for output 
 titletext     = ""
-obsmicflag    = 0
-
---total_seconds = 0
---
---cur_seconds   = 0
---last_text     = ""
---stop_text     = ""
-activated     = false
-
-hotkey_id     = obs.OBS_INVALID_HOTKEY_ID
-
-
--- 변수는 만들었고,
--- 출력될 obs source를 text(GDI+)로 해서 text 값을 내보내기
--- 스크립트 동작 및 프로퍼티 세팅 관련
--- obs의 input source 중 마이크를 골라서 mic 변수에 연동
--- https://obsproject.com/docs/scripting.html#script-sources-lua-only 에서 찾아볼 것
--- https://dev.to/hectorleiva/start-to-write-plugins-for-obs-with-lua-1172?fbclid=IwAR2_oLcHhzYgUxPo137RoiCkzxo8J7KymLrPzJYXCe2jZNclc7zDiIfzKA0
--- https://github.com/hectorleiva/obs_current_date
---
---
-----------------------------------------------------------
+-- :end  
 
 -- A function named script_properties defines the properties that the user
 -- can change for the entire script module itself
