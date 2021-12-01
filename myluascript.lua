@@ -1,5 +1,5 @@
 obs           = obslua
-source_name   = "titlechanger"
+source_name   = ""
 
 -- my variables 
 -- start:
@@ -57,8 +57,15 @@ end
 
 -- A function named script_update will be called when settings are changed
 function script_update(settings)
+    source_name   = obs.obs_data_get_string(settings, "source")
+    dlcflag       = obs.obs_data_get_int(settings, "DLC")
+    modflag       = obs.obs_data_get_int(settings, "MOD")
+    micflag       = obs.obs_data_get_int(settings, "MIC")
+    ttsflag       = obs.obs_data_get_int(settings, "Chat TTS")
+    bgmflag       = obs.obs_data_get_int(settings, "BGM")
+    bgmsrc        = obs.obs_data_get_string(settings, "BGM Src")
+    
     set_title_text()
-    source_name = obs.obs_data_get_string(settings, "source")
 end
 
 -- a function named script_load will be called on startup
@@ -70,7 +77,6 @@ end
 function script_load(settings)
 	local sh = obs.obs_get_signal_handler()
 	obs.signal_handler_connect(sh, "source_activate", source_activated)
-	-- obs.signal_handler_connect(sh, "source_deactivate", source_deactivated)
 end
 
 function source_activated(cd)
@@ -95,49 +101,48 @@ end
 -- my Function to set title text
 function set_title_text()
     titletext = "Cities Skyline : "
-    if dlcflag then 
-        titletext = titletext + "All"
+    if dlcflag == 1 then 
+        titletext = titletext .. "All"
     else
-        titletext = titletext + "NO"
+        titletext = titletext .. "NO"
     end
     
-    titletext = titletext + " DLC, "
+    titletext = titletext .. " DLC, "
     
-    if modflag then
-        titletext = titletext + "MOD"
+    if modflag == 1 then
+        titletext = titletext .. ""
     else
-        titletext = titletext + ""
+        titletext = titletext .. "NO "
     end
 
-    titletext = titletext + ", MIC "
+    titletext = titletext .. "MOD, MIC "
     
-    if micflag then
-        titletext = titletext + "ON"
+    if micflag == 1 then
+        titletext = titletext .. "ON"
     else
-        titletext = titletext + "OFF"
+        titletext = titletext .. "OFF"
     end
     
-    titletext = titletext + ", Chat TTS "
+    titletext = titletext .. ", Chat TTS "
     
-    if ttsflag then
-        titletext = titletext + "ON"
+    if ttsflag == 1 then
+        titletext = titletext .. "ON"
     else
-        titletext = titletext + "OFF"
+        titletext = titletext .. "OFF"
     end
     
-    titletext = titletext + ", BGM "
+    titletext = titletext .. ", BGM "
     
-    if bgmflag then
-        titletext = titletext + "ON"
-        if length(bgmsrc)
-            titletext = titletext + ", " + bgmsrc
+    if bgmflag == 1 then
+        titletext = titletext .. "ON"
+        if string.len(bgmsrc) > 1 then
+            titletext = titletext .. ", " .. bgmsrc
         end
     else
-        titletext = titletext + "OFF"
+        titletext = titletext .. "OFF"
     end
-    
-    local source = obs.obs_get_source_by_name(source_name)
 
+    local source = obs.obs_get_source_by_name(source_name)
     if source ~= nil then
         local settings = obs.obs_data_create()
         obs.obs_data_set_string(settings, "text", titletext)
@@ -150,12 +155,4 @@ end
 -- A function named script_description returns the description shown to the user
 function script_description()
 	return "Sets a text source to write down setting selected.\n\nMade by HT"
-end
-
--- A function named script_save will be called when the script is saved
---
--- NOTE: This function is usually used for saving extra data (such as in this
--- case, a hotkey's save data).  Settings set via the properties are saved
--- automatically.
-function script_save(settings)
 end
