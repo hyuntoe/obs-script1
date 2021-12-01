@@ -36,7 +36,7 @@ function script_properties()
 
     -- 여기에다 내가 원하는 걸 만드는 건가.
     obs.obs_properties_add_int_slider(props, "DLC", "Using DLC", 0, 1, 1)
-    obs.obs_properties_add_int_slider(props, "MOD", "Using MOD from Steam Workshop", 0, 1, 1)
+    obs.obs_properties_add_int_slider(props, "MOD", "Using MOD", 0, 1, 1)
     obs.obs_properties_add_int_slider(props, "MIC", "Using Mic", 0, 1, 1)
     obs.obs_properties_add_int_slider(props, "Chat TTS", "Using Chat TTS", 0, 1, 1)
     obs.obs_properties_add_int_slider(props, "BGM", "playing BGM", 0, 1, 1)
