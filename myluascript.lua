@@ -1,18 +1,7 @@
 obs           = obslua
 source_name   = ""
 
--- my variables 
--- start:
--- for input
-dlcflag       = 0
-modflag       = 0
-micflag       = 0
-ttsflag       = 0
-bgmsrc        = ""
-bgmflag       = 0
--- for output 
 titletext     = ""
--- :end  
 
 -- A function named script_properties defines the properties that the user
 -- can change for the entire script module itself
@@ -35,11 +24,11 @@ function script_properties()
 	obs.source_list_release(sources)
 
     -- 여기에다 내가 원하는 걸 만드는 건가.
-    obs.obs_properties_add_int_slider(props, "DLC", "Using DLC", 0, 1, 1)
-    obs.obs_properties_add_int_slider(props, "MOD", "Using MOD", 0, 1, 1)
-    obs.obs_properties_add_int_slider(props, "MIC", "Using Mic", 0, 1, 1)
-    obs.obs_properties_add_int_slider(props, "Chat TTS", "Using Chat TTS", 0, 1, 1)
-    obs.obs_properties_add_int_slider(props, "BGM", "playing BGM", 0, 1, 1)
+    obs.obs_properties_add_bool(props, "DLC", "Using DLC")
+    obs.obs_properties_add_bool(props, "MOD", "Using MOD")
+    obs.obs_properties_add_bool(props, "MIC", "Using Mic")
+    obs.obs_properties_add_bool(props, "Chat TTS", "Using Chat TTS")
+    obs.obs_properties_add_bool(props, "BGM", "playing BGM")
     obs.obs_properties_add_text(props, "BGM Src", "BGM source", obs.OBS_TEXT_DEFAULT)
 
 	return props
@@ -47,25 +36,25 @@ end
 
 -- A function named script_defaults will be called to set the default settings
 function script_defaults(settings)
-	obs.obs_data_set_default_int(settings, "DLC", 1)
-	obs.obs_data_set_default_int(settings, "MOD", 1)
-	obs.obs_data_set_default_int(settings, "MIC", 0)
-	obs.obs_data_set_default_int(settings, "Chat TTS", 1)
-	obs.obs_data_set_default_int(settings, "BGM", 1)
+	obs.obs_data_set_default_bool(settings, "DLC", true)
+	obs.obs_data_set_default_bool(settings, "MOD", true)
+	obs.obs_data_set_default_bool(settings, "MIC", true)
+	obs.obs_data_set_default_bool(settings, "Chat TTS", true)
+	obs.obs_data_set_default_bool(settings, "BGM", true)
 	obs.obs_data_set_default_string(settings, "BGM Src", "")
 end
 
 -- A function named script_update will be called when settings are changed
 function script_update(settings)
     source_name   = obs.obs_data_get_string(settings, "source")
-    dlcflag       = obs.obs_data_get_int(settings, "DLC")
-    modflag       = obs.obs_data_get_int(settings, "MOD")
-    micflag       = obs.obs_data_get_int(settings, "MIC")
-    ttsflag       = obs.obs_data_get_int(settings, "Chat TTS")
-    bgmflag       = obs.obs_data_get_int(settings, "BGM")
+    dlcflag       = obs.obs_data_get_bool(settings, "DLC")
+    modflag       = obs.obs_data_get_bool(settings, "MOD")
+    micflag       = obs.obs_data_get_bool(settings, "MIC")
+    ttsflag       = obs.obs_data_get_bool(settings, "Chat TTS")
+    bgmflag       = obs.obs_data_get_bool(settings, "BGM")
     bgmsrc        = obs.obs_data_get_string(settings, "BGM Src")
     
-    set_title_text()
+    set_title_text(settings)
 end
 
 -- a function named script_load will be called on startup
@@ -95,36 +84,46 @@ function activate_plugin(cd)
 end
 
 function activate()
-    set_title_text()
+    set_title_text(settings)
 end
 
 -- my Function to set title text
-function set_title_text()
+function set_title_text(settings)
     titletext = "Cities Skyline : NO DLC, NO MOD, MIC OFF, Chat TTS OFF, BGM OFF"
-
-    if dlcflag == 1 then
-        string.gsub(titletext, "NO DLC", "All DLC")
+    
+    if obs.obs_data_get_bool(settings, "DLC") then
+        dlctext = "ALL "
+    else
+        dlctext = "NO "
     end
     
-    if modflag == 1 then
-        string.gsub(titletext, "NO MOD", "MOD")
+    if obs.obs_data_get_bool(settings, "MOD") then
+        modtext = ""
+    else
+        modtext = "NO "
     end
     
-    if micflag == 1 then
-        string.gsub(titletext, "MIC OFF", "MIC ON")
+    if obs.obs_data_get_bool(settings, "MIC") then
+        mictext = "ON"
+    else
+        mictext = "OFF"
     end
     
-    if ttsflag == 1 then
-        string.gsub(titletext, "TTS OFF", "TTS ON")
+    if obs.obs_data_get_bool(settings, "Chat TTS") then
+        ttstext = "ON"
+    else
+        ttstext = "OFF"
     end
     
-    if bgmflag == 1 then
-        string.gsub(titletext, "BGM OFF", "BGM ON")
-
+    if obs.obs_data_get_bool(settings, "BGM") then
+        bgmtext = "ON"
         if bgmsrc ~= "" then
-            titletext = titletext .. ", " .. bgmsrc
+            bgmtext = bgmtext..", "..bgmsrc
         end
+    else
+        bgmtext = "OFF"
     end
+    titletext = dlctext.."DLC, "..modtext.."MOD, MIC "..mictext..", Chat TTS "..ttstext..", BGM "..bgmtext
 
     local source = obs.obs_get_source_by_name(source_name)
     if source ~= nil then
