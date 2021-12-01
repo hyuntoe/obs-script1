@@ -1,13 +1,18 @@
 obs           = obslua
 source_name   = ""
--- my variables
+
+-- my variables 
+-- start:
+-- for input
 dlcflag       = 0
 modflag       = 0
 micflag       = 0
 ttsflag       = 0
 bgmsrc        = ""
 bgmflag       = 0
+-- for output 
 titletext     = ""
+-- :end  
 
 -- A function named script_properties defines the properties that the user
 -- can change for the entire script module itself
