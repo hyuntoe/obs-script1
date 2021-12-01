@@ -119,7 +119,6 @@ function set_title_text()
     end
     
     if bgmflag == 1 then
-        titletext = titletext .. "ON"
         string.gsub(titletext, "BGM OFF", "BGM ON")
 
         if bgmsrc != "" then
