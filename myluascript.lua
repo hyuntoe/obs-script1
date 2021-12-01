@@ -23,7 +23,6 @@ function script_properties()
 
 	obs.source_list_release(sources)
 
-    -- 여기에다 내가 원하는 걸 만드는 건가.
     obs.obs_properties_add_bool(props, "DLC", "Using DLC")
     obs.obs_properties_add_bool(props, "MOD", "Using MOD")
     obs.obs_properties_add_bool(props, "MIC", "Using Mic")
