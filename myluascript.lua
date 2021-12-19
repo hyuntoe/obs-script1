@@ -109,6 +109,7 @@ function set_title_text(settings)
     
     if obs.obs_data_get_bool(settings, "BGM") then
         bgmtext = "ON"
+        bgmsrc = obs.obs_data_get_string(settings, "BGM Src")
         if bgmsrc ~= "" then
             bgmtext = bgmtext..", "..bgmsrc
         end
