@@ -3,7 +3,7 @@ learn LUA script from https://www.lua.org/pil/1.html </br>
 make a LUA script for OBS Studio
 # user input
 some switches ( int_slider, 0, 1, 1 ) in OBS Script property panel </br>
-- DLC, MOD, Mic, TTS, BGM
+- DLC, MOD, disaster, Mic, chat TTS, BGM
 # script output
 - source 'Text (GDI+)' ( name: titletext ) </br>
 - make a string 
