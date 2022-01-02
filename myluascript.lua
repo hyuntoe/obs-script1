@@ -38,8 +38,8 @@ end
 function script_defaults(settings)
 	obs.obs_data_set_default_bool(settings, "DLC", true)
 	obs.obs_data_set_default_bool(settings, "MOD", true)
-    obs.obs_data_set_default_bool(settings, "Dis", false)
-    obs.obs_data_set_default_bool(settings, "MIC", false)
+  obs.obs_data_set_default_bool(settings, "Dis", false)
+  obs.obs_data_set_default_bool(settings, "MIC", false)
 	obs.obs_data_set_default_bool(settings, "Chat TTS", true)
 	obs.obs_data_set_default_bool(settings, "BGM", true)
 	obs.obs_data_set_default_string(settings, "BGM Src", "")
@@ -83,7 +83,6 @@ end
 
 -- my Function to set title text
 function set_title_text(settings)
-    
     if obs.obs_data_get_bool(settings, "DLC") then
         dlctext = "ALL "
     else
