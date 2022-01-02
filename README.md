@@ -6,7 +6,9 @@ some switches ( int_slider, 0, 1, 1 ) in OBS Script property panel </br>
 - DLC, MOD, Mic, TTS, BGM
 # script output
 - source 'Text (GDI+)' ( name: titletext ) </br>
-- make a string "Cities Skyline : { all / no } DLC, { / no } MOD, Mic { on / off }, Chat TTS { on / off }, BGM { on / off } " </br>
+- make a string 
+>> { all / no } DLC, { / no } MOD, Disaster { on / off } </br>
+>> Mic { on / off }, Chat TTS { on / off }, BGM { on / off } </br>
 - set string to Text source
 # References
 https://obsproject.com/docs/scripting.html#script-sources-lua-only  </br>
