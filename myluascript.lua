@@ -25,6 +25,7 @@ function script_properties()
 
     obs.obs_properties_add_bool(props, "DLC", "Using DLC")
     obs.obs_properties_add_bool(props, "MOD", "Using MOD")
+    obs.obs_properties_add_bool(props, "Dis", "Disater ON")
     obs.obs_properties_add_bool(props, "MIC", "Using Mic")
     obs.obs_properties_add_bool(props, "Chat TTS", "Using Chat TTS")
     obs.obs_properties_add_bool(props, "BGM", "playing BGM")
@@ -37,7 +38,8 @@ end
 function script_defaults(settings)
 	obs.obs_data_set_default_bool(settings, "DLC", true)
 	obs.obs_data_set_default_bool(settings, "MOD", true)
-	obs.obs_data_set_default_bool(settings, "MIC", true)
+  obs.obs_data_set_default_bool(settings, "Dis", false)
+  obs.obs_data_set_default_bool(settings, "MIC", false)
 	obs.obs_data_set_default_bool(settings, "Chat TTS", true)
 	obs.obs_data_set_default_bool(settings, "BGM", true)
 	obs.obs_data_set_default_string(settings, "BGM Src", "")
@@ -81,8 +83,6 @@ end
 
 -- my Function to set title text
 function set_title_text(settings)
-    titletext = "Cities Skyline : NO DLC, NO MOD, MIC OFF, Chat TTS OFF, BGM OFF"
-    
     if obs.obs_data_get_bool(settings, "DLC") then
         dlctext = "ALL "
     else
@@ -93,6 +93,12 @@ function set_title_text(settings)
         modtext = ""
     else
         modtext = "NO "
+    end
+
+    if obs.obs_data_get_bool(settings, "Dis") then
+        distext = "ON"
+    else
+        distext = "OFF"
     end
     
     if obs.obs_data_get_bool(settings, "MIC") then
@@ -118,7 +124,7 @@ function set_title_text(settings)
     else
         bgmtext = "OFF"
     end
-    titletext = dlctext.."DLC, "..modtext.."MOD, MIC "..mictext..", Chat TTS "..ttstext..", BGM "..bgmtext
+    titletext = dlctext.."DLC, "..modtext.."MOD, Disater "..distext..",\nMIC "..mictext..", Chat TTS "..ttstext..", BGM "..bgmtext
 
     local source = obs.obs_get_source_by_name(source_name)
     if source ~= nil then
