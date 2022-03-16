@@ -1,15 +1,23 @@
 ## obs-script1
 learn LUA script from https://www.lua.org/pil/1.html </br>
-make a LUA script for OBS Studio
+make a LUA script for OBS Studio </br>
+
 # user input
-some switches ( int_slider, 0, 1, 1 ) in OBS Script property panel </br>
+some checkboxes in OBS Script property panel </br>
 - DLC, MOD, disaster, Mic, chat TTS, BGM
+- BGM URL
+
 # script output
-- source 'Text (GDI+)' ( name: titletext ) </br>
-- make a string 
+to source in OBS scene
+- source_type: Text (GDI+) </br>
+- source_name: Title </br>
+
+read checkboxes and make a string </br>
 > { all / no } DLC, { / no } MOD, Disaster { on / off } </br>
-> Mic { on / off }, Chat TTS { on / off }, BGM { on / off } </br>
-- set string to Text source
+> Mic { on / off }, Chat TTS { on / off }, BGM { on / off } , url info </br>
+
+set string to Text source </br>
+
 # References
 https://obsproject.com/docs/scripting.html#script-sources-lua-only  </br>
 https://dev.to/hectorleiva/start-to-write-plugins-for-obs-with-lua-1172?fbclid=IwAR2_oLcHhzYgUxPo137RoiCkzxo8J7KymLrPzJYXCe2jZNclc7zDiIfzKA0  </br>
