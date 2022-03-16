@@ -7,7 +7,9 @@ copy 'myluascript.lua' file into "C:\Program Files\obs-studio\data\obs-plugins\f
 then, you can use it in script menu </br>
 
 ![OBS capture](./img/OBS cap.jpg)</br>
+<img src="./img/OBS cap.jpg">
 ![OBS menu capture](./img/OBS menu cap.jpg)</br>
+<img src="./img/OBS menu cap.jpg">
 
 # user input
 some checkboxes in OBS Script property panel </br>
@@ -15,6 +17,7 @@ some checkboxes in OBS Script property panel </br>
 - BGM URL
 
 ![script panel capture](./img/script panel cap.jpg)</br>
+<img src="./img/script panel cap.jpg">
 
 # script output
 to source in OBS scene
@@ -28,6 +31,7 @@ read checkboxes and make a string </br>
 set string to Text source </br>
 
 ![working capture](./img/working cap.jpg)
+<img src="./img/working cap.jpg">
 
 # References
 https://obsproject.com/docs/scripting.html#script-sources-lua-only  </br>
