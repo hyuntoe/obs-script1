@@ -13,8 +13,8 @@ to source in OBS scene
 - source_name: Title </br>
 
 read checkboxes and make a string </br>
-> { all / no } DLC, { / no } MOD, Disaster { on / off } </br>
-> Mic { on / off }, Chat TTS { on / off }, BGM { on / off } , url info </br>
+> { ALL / NO } DLC, { Using / NO } MOD, Disaster { ON / OFF } </br>
+> MIC { ON / OFF }, Chat TTS { ON / OFF }, BGM { ON / OFF } , url info (if only BGM is ON) </br>
 
 set string to Text source </br>
 
