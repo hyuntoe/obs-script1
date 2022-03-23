@@ -7,6 +7,22 @@ titletext     = ""
 -- can change for the entire script module itself
 function script_properties()    
 	local props = obs.obs_properties_create()
+
+    -- local p = obs.obs_properties_add_list(props, "source", "Text Source", obs.OBS_COMBO_TYPE_EDITABLE, obs.OBS_COMBO_FORMAT_STRING)
+	-- local sources = obs.obs_enum_sources()
+
+	-- if sources ~= nil then
+	-- 	for _, source in ipairs(sources) do
+	-- 		source_id = obs.obs_source_get_unversioned_id(source)
+	-- 		if source_id == "text_gdiplus" or source_id == "text_ft2_source" then
+	-- 			local name = obs.obs_source_get_name(source)
+	-- 			obs.obs_property_list_add_string(p, name, name)
+	-- 		end
+	-- 	end
+	-- end
+
+	-- obs.source_list_release(sources)
+
     obs.obs_properties_add_bool(props, "DLC", "Using DLC")
     obs.obs_properties_add_bool(props, "MOD", "Using MOD")
     obs.obs_properties_add_bool(props, "Dis", "Disaster ON")
@@ -14,16 +30,24 @@ function script_properties()
     obs.obs_properties_add_bool(props, "TTS", "Using Chat TTS")
     obs.obs_properties_add_bool(props, "BGM", "playing BGM")
     obs.obs_properties_add_text(props, "URL", "", obs.OBS_TEXT_DEFAULT)
+
     return props
 end
 
 -- A function named script_defaults will be called to set the default settings
 function script_defaults(settings)
-
+    -- obs.obs_data_set_default_bool(settings, "DLC", true)
+	-- obs.obs_data_set_default_bool(settings, "MOD", true)
+    -- obs.obs_data_set_default_bool(settings, "Dis", false)
+    -- obs.obs_data_set_default_bool(settings, "MIC", false)
+	-- obs.obs_data_set_default_bool(settings, "Chat TTS", true)
+	-- obs.obs_data_set_default_bool(settings, "BGM", true)
+	-- obs.obs_data_set_default_string(settings, "BGM Src", "")
 end
 
 -- A function named script_update will be called when settings are changed
 function script_update(settings)
+    -- source_name   = obs.obs_data_get_string(settings, "source")
     set_title_text(settings)
 end
 
