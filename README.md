@@ -16,7 +16,7 @@ some checkboxes in OBS Script property panel </br>
 - DLC, MOD, disaster, Mic, chat TTS, BGM
 - BGM URL
 
-![script panel capture](./img/script panel cap.jpg)</br>
+![script panel capture](./img/script panel cap2.jpg)</br>
 <img src="./img/script panel cap2.jpg">
 
 # script output
@@ -30,7 +30,7 @@ read checkboxes and make a string </br>
 
 set string to Text source </br>
 
-![working capture](./img/working cap.jpg)
+![working capture](./img/working cap2.jpg)
 <img src="./img/working cap2.jpg">
 
 # References
