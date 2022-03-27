@@ -30,7 +30,7 @@ read checkboxes and make a string </br>
 
 set string to Text source </br>
 
-![working capture](./img/working cap2.jpg)
+![working capture](./img/working cap2.jpg) </br>
 <img src="./img/working cap2.jpg">
 
 # References
