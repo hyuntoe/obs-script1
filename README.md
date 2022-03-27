@@ -30,7 +30,6 @@ read checkboxes and make a string </br>
 
 set string to Text source </br>
 
-<<<<<<< HEAD
 ![working capture](./img/working cap2.png)</br>
 <img src="./img/working cap2.png">
 
