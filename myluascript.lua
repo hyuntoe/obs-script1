@@ -34,20 +34,20 @@ function script_properties()
     obs.obs_properties_add_text(props, "URL", "", obs.OBS_TEXT_DEFAULT)
 
     -- for test of function activate()
-    get_text(source_name)
-    get_position(origin_text)
-    get_string(origin_text)
+    -- get_text(source_name)
+    -- get_position(origin_text)
+    -- get_string(origin_text)
 
-    obs.obs_properties_add_bool(props, "test", origin_text)
-    local temp_text = "DLC:"..origin_text_array["DLC_t"]
-    temp_text=temp_text.."/MOD:"..origin_text_array["MOD_t"]
-    temp_text=temp_text.."/Disater:"..origin_text_array["DIS_t"].."\n"
-    temp_text=temp_text.."/MIC:"..origin_text_array["MIC_t"]
-    temp_text=temp_text.."/Chat TTS:"..origin_text_array["TTS_t"]
-    temp_text=temp_text.."/BGM:"..origin_text_array["BGM_t"].."\n"
-    temp_text=temp_text.."/URL:/"..origin_text_array["URL_t"].."/"
+    -- obs.obs_properties_add_bool(props, "test", origin_text)
+    -- local temp_text = "DLC:"..origin_text_array["DLC_t"]
+    -- temp_text=temp_text.."/MOD:"..origin_text_array["MOD_t"]
+    -- temp_text=temp_text.."/Disater:"..origin_text_array["DIS_t"].."\n"
+    -- temp_text=temp_text.."/MIC:"..origin_text_array["MIC_t"]
+    -- temp_text=temp_text.."/Chat TTS:"..origin_text_array["TTS_t"]
+    -- temp_text=temp_text.."/BGM:"..origin_text_array["BGM_t"].."\n"
+    -- temp_text=temp_text.."/URL:/"..origin_text_array["URL_t"].."/"
 
-    obs.obs_properties_add_bool(props, "1111", temp_text)
+    -- obs.obs_properties_add_bool(props, "1111", temp_text)
     -- test end
     return props
 end
