@@ -16,8 +16,8 @@ some checkboxes in OBS Script property panel </br>
 - DLC, MOD, disaster, Mic, chat TTS, BGM
 - BGM URL
 
-![script panel capture](./img/script panel cap2.jpg)</br>
-<img src="./img/script panel cap2.jpg">
+![script panel capture](./img/script panel cap2.png)</br>
+<img src="./img/script panel cap2.png">
 
 # script output
 to source in OBS scene
@@ -30,8 +30,8 @@ read checkboxes and make a string </br>
 
 set string to Text source </br>
 
-![working capture](./img/working cap2.jpg)
-<img src="./img/working cap2.jpg">
+![working capture](./img/working cap2.png)</br>
+<img src="./img/working cap2.png">
 
 # References
 https://obsproject.com/docs/scripting.html#script-sources-lua-only  </br>
