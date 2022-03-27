@@ -17,7 +17,7 @@ some checkboxes in OBS Script property panel </br>
 - BGM URL
 
 ![script panel capture](./img/script panel cap.jpg)</br>
-<img src="./img/script panel cap.jpg">
+<img src="./img/script panel cap2.jpg">
 
 # script output
 to source in OBS scene
@@ -31,7 +31,7 @@ read checkboxes and make a string </br>
 set string to Text source </br>
 
 ![working capture](./img/working cap.jpg)
-<img src="./img/working cap.jpg">
+<img src="./img/working cap2.jpg">
 
 # References
 https://obsproject.com/docs/scripting.html#script-sources-lua-only  </br>
