@@ -57,6 +57,9 @@ function get_text(source_name)
     local source = obs.obs_get_source_by_name (source_name)
     local settings = obs.obs_source_get_settings(source)
     origin_text = obs.obs_data_get_string (settings, "text")
+
+    obs.obs_source_release(source)
+    obs.obs_data_release(settings)
 end
 
 -- function get positon from content text
